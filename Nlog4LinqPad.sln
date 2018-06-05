@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zorgoz.Nlog4LinqPad", "zorgoz.Nlog4LinqPad\zorgoz.Nlog4LinqPad.csproj", "{671FD4ED-C6E2-4210-B964-5C0F0D4E09AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{671FD4ED-C6E2-4210-B964-5C0F0D4E09AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{671FD4ED-C6E2-4210-B964-5C0F0D4E09AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{671FD4ED-C6E2-4210-B964-5C0F0D4E09AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{671FD4ED-C6E2-4210-B964-5C0F0D4E09AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE440703-9809-486F-B86E-BE033E077F13}
+	EndGlobalSection
+	GlobalSection(MercurialSourceControlSolutionProperties) = preSolution
+		SolutionIsControlled = True
+		SolutionBindings = <Solution Location In Database>
+	EndGlobalSection
+EndGlobal

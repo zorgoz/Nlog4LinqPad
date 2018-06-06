@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 namespace zorgoz.Nlog4LinqPad
 {
 	[Target("LinqPadHtml")]
-	public sealed class LinqPadHtmlTarget : TargetWithLayout
+	internal sealed class LinqPadHtmlTarget : TargetWithLayout
 	{
 		private const string prefix = "lqph";
 		private static readonly Regex extractRenderer = new Regex(@"\$\{(.+?)(:.+?)?}", RegexOptions.Singleline | RegexOptions.Compiled);
@@ -26,6 +26,7 @@ namespace zorgoz.Nlog4LinqPad
 		public string Append { get; set; }
 		public string ItemNode { get; set; } = "span";
 		public string RowNode { get; set; } = "div";
+		public string PanelName { get; set; }
 
 		private IDictionary<string, SimpleLayout> layouts;
 		private string layout;
@@ -45,7 +46,7 @@ namespace zorgoz.Nlog4LinqPad
 
 		protected override void InitializeTarget()
 		{
-			Util.RawHtml(GetHtmlStyleTag()).Dump();
+			Util.RawHtml(GetHtmlStyleTag()).DumpToPanel(PanelName);
 		}
 
 		private bool HasRowStyle => !string.IsNullOrWhiteSpace(Styling.Row);
@@ -76,7 +77,7 @@ namespace zorgoz.Nlog4LinqPad
 
 		protected override void Write(LogEventInfo logEvent)
 		{
-			Util.RawHtml(GetLogEventTag(logEvent)).Dump();
+			Util.RawHtml(GetLogEventTag(logEvent)).DumpToPanel(PanelName);
 		}
 
 		private string GetLogEventTag(LogEventInfo logEvent)

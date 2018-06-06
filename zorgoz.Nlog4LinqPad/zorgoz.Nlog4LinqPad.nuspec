@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>zorgoz.Nlog4LinqPad</id>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
     <title>zorgoz.Nlog4LinqPad</title>
     <authors>Zoltan Zorgo</authors>
     <owners>Zoltan Zorgo</owners>
@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/zorgoz/Nlog4LinqPad</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>NLog logging support for LinqPad</description>
-    <releaseNotes>First public version.</releaseNotes>
+    <releaseNotes>Added mimimum log level parameter and possibility to log to different LinqPad panel</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>nlog nlog-target linqpad utility library</tags>
   </metadata>

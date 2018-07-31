@@ -46,17 +46,30 @@ namespace zorgoz.Nlog4LinqPad
 
 		protected override void InitializeTarget()
 		{
+			Util.RawHtml(@"<!DOCTYPE HTML><html><head><meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8""/><meta http-equiv=""X-UA-Compatible"" content=""IE=edge""/>").DumpToPanel(PanelName);
 			Util.RawHtml(GetHtmlStyleTag()).DumpToPanel(PanelName);
+			Util.RawHtml("</head><body>").DumpToPanel(PanelName);
+		}
+
+		protected override void CloseTarget()
+		{
+			Util.RawHtml("</body></html>").DumpToPanel(PanelName);
 		}
 
 		private bool HasRowStyle => !string.IsNullOrWhiteSpace(Styling.Row);
 		private bool HasItemStyle => !string.IsNullOrWhiteSpace(Styling.Item);
+
+		private string BaseStyle => Util.IsDarkThemeEnabled
+			? "body { margin: 0.3em 0.3em 0.4em 0.4em; font-family: Verdana; font-size: 80%; background: rgb(30,30,30); color: rgb(220,220,220) }"
+			: "body { margin: 0.3em 0.3em 0.4em 0.4em; font-family: Verdana; font-size: 80%; background: white;}";
 
 		private string GetHtmlStyleTag()
 		{
 			var styleBuilder = new StringBuilder();
 
 			styleBuilder.AppendLine("<style type='text/css'>");
+
+			styleBuilder.AppendLine(BaseStyle);
 
 			if (HasRowStyle) styleBuilder.AppendLine($".{prefix}-row {{{Styling.Row}}}");
 			if (HasItemStyle) styleBuilder.AppendLine($".{prefix}-item {{{Styling.Item}}}");

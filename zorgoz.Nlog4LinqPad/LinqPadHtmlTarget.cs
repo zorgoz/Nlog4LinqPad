@@ -22,8 +22,6 @@ namespace zorgoz.Nlog4LinqPad
 
 		public TargetStyling Styling { get; set; } = TargetStyling.Default;
 
-		public string Prepend { get; set; }
-		public string Append { get; set; }
 		public string ItemNode { get; set; } = "span";
 		public string RowNode { get; set; } = "div";
 		public string PanelName { get; set; }
@@ -46,14 +44,20 @@ namespace zorgoz.Nlog4LinqPad
 
 		protected override void InitializeTarget()
 		{
-			Util.RawHtml(@"<!DOCTYPE HTML><html><head><meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8""/><meta http-equiv=""X-UA-Compatible"" content=""IE=edge""/>").DumpToPanel(PanelName);
-			Util.RawHtml(GetHtmlStyleTag()).DumpToPanel(PanelName);
-			Util.RawHtml("</head><body>").DumpToPanel(PanelName);
+			if (string.IsNullOrWhiteSpace(PanelName))
+			{
+				Util.RawHtml(GetHtmlStyleTag()).Dump();
+			}
+			else
+			{
+				GetHtmlStyleTag().InitPanel(PanelName);
+			}
 		}
 
 		protected override void CloseTarget()
 		{
 			Util.RawHtml("</body></html>").DumpToPanel(PanelName);
+			PanelHelper.End();
 		}
 
 		private bool HasRowStyle => !string.IsNullOrWhiteSpace(Styling.Row);
